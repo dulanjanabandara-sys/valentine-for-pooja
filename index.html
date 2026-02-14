@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pooja ❤️</title>
+<style>
+body{
+    margin:0;
+    background:#ff4b6e;
+    text-align:center;
+    font-family:Arial;
+    overflow:hidden;
+    color:white;
+}
+
+h1{
+    margin-top:120px;
+    font-size:26px;
+    font-weight:bold;
+}
+
+button{
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:25px;
+    margin:10px;
+    font-weight:bold;
+}
+
+#yes{
+    background:white;
+    color:#ff4b6e;
+}
+
+#no{
+    background:black;
+    color:white;
+    position:absolute;
+}
+
+#message{
+    display:none;
+    margin-top:30px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.heart{
+    position:fixed;
+    bottom:0;
+    animation:float 5s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(-100vh);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>POOJA WILL YOU BE MY VALENTINE? 💖</h1>
+
+<button id="yes">YES 💕</button>
+<button id="no">NO 😜</button>
+
+<div id="message">
+I KNEW YOU LOVE ME 😍💖<br><br>
+<img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="200">
+</div>
+
+<script>
+/* floating hearts */
+setInterval(function(){
+    var heart=document.createElement("div");
+    heart.innerHTML="💖";
+    heart.className="heart";
+    heart.style.left=Math.random()*100+"vw";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),5000);
+},300);
+
+/* no button move */
+var no=document.getElementById("no");
+
+function move(){
+    no.style.left=Math.random()*300+"px";
+    no.style.top=Math.random()*500+"px";
+}
+
+no.addEventListener("mouseover",move);
+no.addEventListener("touchstart",function(e){
+    e.preventDefault();
+    move();
+});
+
+/* yes click */
+document.getElementById("yes").onclick=function(){
+    document.getElementById("message").style.display="block";
+}
+</script>
+
+</body>
+</html>
