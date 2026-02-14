@@ -2,35 +2,52 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pooja ❤️</title>
+<title>For My Love Pooja ❤️</title>
+
 <style>
 body{
     margin:0;
-    background:#ff4b6e;
-    text-align:center;
     font-family:Arial;
-    overflow:hidden;
+    text-align:center;
+    background:linear-gradient(135deg,#ff416c,#ff4b2b);
     color:white;
+    overflow:hidden;
 }
 
 h1{
-    margin-top:120px;
-    font-size:26px;
+    margin-top:40px;
+    font-size:24px;
     font-weight:bold;
 }
 
+.gallery{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+}
+
+.gallery img{
+    width:120px;
+    height:160px;
+    object-fit:cover;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(255,255,255,0.7);
+}
+
 button{
-    padding:15px 30px;
+    padding:15px 25px;
     font-size:18px;
     border:none;
     border-radius:25px;
-    margin:10px;
+    margin:15px;
     font-weight:bold;
 }
 
 #yes{
     background:white;
-    color:#ff4b6e;
+    color:#ff416c;
 }
 
 #no{
@@ -39,9 +56,9 @@ button{
     position:absolute;
 }
 
-#message{
+#result{
     display:none;
-    margin-top:30px;
+    margin-top:20px;
     font-size:22px;
     font-weight:bold;
 }
@@ -63,15 +80,29 @@ button{
 
 <h1>POOJA WILL YOU BE MY VALENTINE? 💖</h1>
 
+<!-- Photo Gallery -->
+<div class="gallery">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+</div>
+
+<!-- Buttons -->
 <button id="yes">YES 💕</button>
 <button id="no">NO 😜</button>
 
-<div id="message">
+<div id="result">
 I KNEW YOU LOVE ME 😍💖<br><br>
-<img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="200">
+<img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="180">
 </div>
 
+<!-- Music -->
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mp3">
+</audio>
+
 <script>
+
 /* floating hearts */
 setInterval(function(){
     var heart=document.createElement("div");
@@ -82,24 +113,38 @@ setInterval(function(){
     setTimeout(()=>heart.remove(),5000);
 },300);
 
-/* no button move */
+/* move NO button */
 var no=document.getElementById("no");
 
 function move(){
-    no.style.left=Math.random()*300+"px";
-    no.style.top=Math.random()*500+"px";
+    no.style.left=Math.random()*250+"px";
+    no.style.top=Math.random()*400+"px";
 }
 
-no.addEventListener("mouseover",move);
 no.addEventListener("touchstart",function(e){
     e.preventDefault();
     move();
 });
 
-/* yes click */
+/* YES click */
 document.getElementById("yes").onclick=function(){
-    document.getElementById("message").style.display="block";
+    document.getElementById("result").style.display="block";
+    document.getElementById("bgMusic").play();
+    explodeHearts();
 }
+
+/* heart explosion */
+function explodeHearts(){
+    for(let i=0;i<30;i++){
+        var heart=document.createElement("div");
+        heart.innerHTML="💘";
+        heart.className="heart";
+        heart.style.left=Math.random()*100+"vw";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),5000);
+    }
+}
+
 </script>
 
 </body>
